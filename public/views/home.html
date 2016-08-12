@@ -30,7 +30,14 @@
         </md-list-item>
         </md-list>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="delete()">Delete</md-button>
+          <md-button class="md-fab msg" ng-disabled="false" aria-label="Chat">
+          <ng-md-icon icon="message" style="fill: white" size="20"></ng-md-icon> 
+          </md-button>
+          <md-button class="md-fab delete" ng-disabled="false" ng-click="delete()" aria-label="Comment">
+            <ng-md-icon icon="delete_forever" style="fill: white" size="20"></ng-md-icon> 
+          </md-button>
+
+
           <!-- <md-button>Action 2</md-button> -->
         </md-card-actions>
       </md-card>
