@@ -7,6 +7,7 @@ var app = angular.module('puppyLove', [
   'ngAnimate',
   'ngAria',
   'ngMessages',
+  'ngMdIcons',
   'MainController'
   ])
 

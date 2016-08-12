@@ -364,6 +364,21 @@ a {
 .md-3-line{
   padding: 12px;
 }
+
+.md-button.md-fab{
+  line-height: 67px!important;
+}
+
+.msg{
+  color: white;
+  background: #2ba7a7!important;
+}
+
+.delete{
+  color: white;
+  background: ##9e2020!important;
+}
+
 #navbar-buttons{
   float: right;
   margin-top: 22px;
