@@ -2,6 +2,7 @@ var app = angular.module('puppyLove', [
   'ngRoute',
   'OwnerService',
   'MainController',
+  'LeftController',
   'AddOwnerController',
   'ngMaterial',
   'ngAnimate',
@@ -43,6 +44,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
      .when('/signup', {
        templateUrl: 'views/signup.html'
     })
+     .when('/messages', {
+      templateUrl: 'views/messages.html'
+     })
     .otherwise({
      redirectTo: '/'
     })
