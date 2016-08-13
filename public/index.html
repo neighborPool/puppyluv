@@ -24,56 +24,56 @@
      <script src="libs/angular-animate/angular-animate.js"></script>
     <script src="libs/angular-aria/angular-aria.js"></script>
     <script src="libs/angular-messages/angular-messages.js"></script>
+    
     <!-- ANGULAR CUSTOM -->
     <script src="js/controllers/MainCtrl.js"></script>
     <script src="js/controllers/AddOwner.js"></script>
+    <script src="js/controllers/LeftController.js"></script>
     <script src="js/services/OwnerService.js"></script>
     <script src="js/app.js"></script>
 </head>
 <body ng-app="puppyLove">
 <div class="container">
-
-    <!-- HEADER -->
-        <sp-navbar></sp-navbar> 
+  <div layout="row">
+    <div class="navContainer" flex="30">
+  
     <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <md-button id= "navbar-button" class="navbar-brand" href="/#/">Puppy Love</md-button>
-
-            <a href="https://github.com/bananasbabay/puppyluv" target="_blank">
-            <img id="gitHub" src="/assets/GitHub_Logo.png"/>
-            </a>
-
-             <div flex = '40'></div>
-            <md-button id= "navbar-buttons" class="navbar-brand" href="/#/login">Log Out</md-button>
-               <div flex = '40'></div>
-
-        </div>
-
-        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-        <ul class="nav navbar-nav">
-            <li class="navButton"><md-button href="#/profile">   Owners</md-button>
-            <div flex></div></li>
-            <li class="navButton"><md-button href="#/add">   Create Your Personal Profile!</md-button>
-            <div flex></div></li>
-            <li class="navButton"><md-button href="#/about">About PuppyLove</md-button>
-            <div flex></div></li>
-            <li class="navButton"><md-button href="#/profile">Home</md-button>
-               <div flex></div></li>
-                <li class="navButton"><md-button href="#/chat">Chat Here</md-button>
-               <div flex></div></li>
-        </ul>
+      <div class="navbar-header">
+        <md-button id= "navbar-button" class="navbar-brand" href="/#/">Puppy Love</md-button>
+        <md-button id= "navbar-buttons" class="navbar-brand" href="/#/login">Log Out</md-button>
+      </div>
     </nav>
+  
+  <ul class="nav navbar-nav">
+    <li class="navButton"><md-button href="#/profile">Home Page</md-button>
+    <div flex></div></li>
+    <li class="navButton"><md-button href="#/add">Create Your Personal Profile!</md-button>
+    <div flex></div></li>
+    <li class="navButton"><md-button href="#/about">About PuppyLove</md-button>
+    <div flex></div></li>
+    <li class="navButton"><md-button href="#/chat">Chat Here</md-button>
+    <div flex></div></li>
+  </ul>
+  <hr>
+    <a href="https://github.com/bananasbabay/puppyluv" target="_blank">
+    <img id="gitHub" src="/assets/GitHub_Logo.png"/>
+    </a>
 
-    <!-- ANGULAR DYNAMIC CONTENT -->
+  </div>
 
-    <div ng-view></div>
+    <div flex> 
+      <div ng-view class="viewContainer"></div> 
+    </div>
+  </div>
 
 </div>
+
+<!-- 
 <script>
   window.intercomSettings = {
     app_id: "rx6kt278"
   };
 </script>
-<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/rx6kt278';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/rx6kt278';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script> -->
 </body>
 </html>

@@ -10,7 +10,12 @@
 #auth {
   border: none;
 }
-
+.viewContainer{
+  padding: 0 10px;
+}
+.searchContainer{
+  width: 100%;
+}
 @media screen and (max-width: 740px) { 
   #auth button {
     width: 100%;
@@ -36,10 +41,14 @@ md-content {
 /*end form*/
 
 .ng-scope{
-  width: 100%;
-  float: left;
+  /* width: 100%; */
+  /* float: left; */
 }
 
+
+.container{
+  width: 100%;
+}
 
 
 .carddemoBasicUsage .card-media {
@@ -57,11 +66,22 @@ md-content {
 
 .nav{
   width: 100%;
+  padding: 0px;
+}
+
+.navContainer{
+  background-color: #00c176!important;
 }
 
 .navButton{
   list-style-type: none;
   float: left;
+  width: 100%;
+}
+.navButton a{
+  width: 90%;
+  text-align: left;
+  color: white;
 }
 
 .no-transform {
@@ -381,5 +401,5 @@ a {
 
 #navbar-buttons{
   float: right;
-  margin-top: 22px;
+  /* margin-top: 22px; */
 }

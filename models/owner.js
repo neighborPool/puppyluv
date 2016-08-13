@@ -20,8 +20,17 @@ var ownerSchema = new mongoose.Schema({
   dogHeight: String,
   dogWeight: Number,
   dogAKCPapers: String,
-  aboutDog: String
+  aboutDog: String,
+  messages: []
 });
+
+
+// {
+//   $push:{"ownerSchema.messages": {"Date Received": "10/4/2013",
+//     "Date Released": "10/11/2013",
+//     "Source": "Center of Mars",
+//     "Control Number": "100010005"}}
+// }
 
 
 // Return model

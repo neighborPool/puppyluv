@@ -1,11 +1,13 @@
 <div>
   <h1>Welcome to PuppyLove!</h1>
   <p>{{ tagline }}</p>
-   <md-input-container flex="40" md-no-float>
-  <input type="text" placeholder="Search for an owner" name="puppy" ng-model = "banana">
-   </md-input-container>
+    <md-input-container class="searchContainer">
+      <label>Search for a dog or owner</label>
+      <input flex="90" name="puppy" ng-model = "banana">
+    </md-input-container>
+
   <md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="50" layout="column">
+    <div flex-xs flex-gt-xs="90" layout="column">
       <md-card md-theme-watch ng-repeat="owner in owners | filter:banana">
         <md-card-title>
           <md-card-title-text>
@@ -30,32 +32,14 @@
         </md-list-item>
         </md-list>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-fab msg" ng-disabled="false" aria-label="Chat">
+          <md-button class="md-fab msg" ng-disabled="false" aria-label="Chat" ng-href="/#/messages">
           <ng-md-icon icon="message" style="fill: white" size="20"></ng-md-icon> 
           </md-button>
           <md-button class="md-fab delete" ng-disabled="false" ng-click="delete()" aria-label="Comment">
             <ng-md-icon icon="delete_forever" style="fill: white" size="20"></ng-md-icon> 
           </md-button>
-
-
-          <!-- <md-button>Action 2</md-button> -->
         </md-card-actions>
       </md-card>
     </div>
   </md-content>
-
-
-
-
-
-  <!-- <div class="owners" ng-repeat="owner in owners | filter:banana">
-   <span class="name-query-results" layout-padding>
-    <h2>{{owner.firstName}} 
-     {{owner.lastName}}</h2>
-    <p>Location: {{owner.location}}</p>
-     <p>Favorite Breed: {{owner.favorite}}</p>
-     <md-button ng-click="delete()">Delete</md-button>
-  </span>
-    {{dog}}
-  </div> -->
 </div>
