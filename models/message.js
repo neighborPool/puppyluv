@@ -1,5 +1,4 @@
-var restful = require('node-restful');
-var mongoose = restful.mongoose;
+var mongoose = require('mongoose');
 
 var MessageSchema = new mongoose.Schema({
     from: String,
@@ -8,4 +7,4 @@ var MessageSchema = new mongoose.Schema({
     msg: String
 })
 
-module.exports = restful.model('Message', MessageSchema)
+module.exports = mongoose.model('Message', MessageSchema)
