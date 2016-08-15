@@ -93,9 +93,6 @@ router.route('/owners/:owner_id')
   })
 
 
-
-
-
 router.post('/register', function(req, res, next){
   if(!req.body.username || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
@@ -129,8 +126,6 @@ router.post('/login', function(req, res, next){
     }
   })(req, res, next);
 })
-
-Owner.register(router, '/owners');
 
 // Return router
 module.exports = router;

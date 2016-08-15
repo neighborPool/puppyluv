@@ -25,11 +25,6 @@ app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json());
 app.use(passport.initialize());
 // Routes for our api:
-// original code ends here update tomorrow if all is working uncomment the next line: and erase all of ====== new code ====== 
-// app.use('/api', require('./routes/api'));
-
-// === routes
-
 
 // Register our routes -------------
 // all of our routes will be prefixed with the /api
