@@ -10,7 +10,9 @@ var app = angular.module('puppyLove', [
   'ngMessages',
   'ngMdIcons',
   'MainController',
-  'MessagesController'
+  'MessagesController',
+  'login',
+  'signup'
   ])
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -40,10 +42,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        templateUrl: 'views/chat.html'
            })
      .when('/login', {
-       templateUrl: 'views/signin.html'
+       templateUrl: 'views/signin.html',
+       controller: 'LoginCtrl'
     })
      .when('/signup', {
-       templateUrl: 'views/signup.html'
+       templateUrl: 'views/signup.html',
+       controller: 'SignupCtrl'
     })
      .when('/messages', {
       templateUrl: 'views/messages.html',

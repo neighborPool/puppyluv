@@ -13,7 +13,6 @@ var OwnerSchema = new mongoose.Schema({
   location: String,
   favorite: String,
   numberOfBreeds: Number,
-  numberOfDogs: Number,
   dogs: [{type: mongoose.Schema.Types.ObjectId, ref: 'Dog'}],
   messages: []
 });

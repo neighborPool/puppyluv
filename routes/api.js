@@ -28,8 +28,7 @@ router.route('/owners')
     var owner = new Owner();
     owner.username = req.body.username;
     owner.password = req.body.password;
-    
-
+   
     owner.save(function(err){
       if(err){
         res.send(err);
@@ -37,6 +36,10 @@ router.route('/owners')
 
       res.json({message: 'Owner created!'})
     });
+  })
+  .put(function(req,res){
+  	console.log('this is the put request for user', req.body)
+  	res.json(req.body)
   })
   .get(function(req, res){
     Owner.find(function(err, owners){
@@ -47,20 +50,40 @@ router.route('/owners')
     });
   });
 
+
+
+router.param('owner', function(req, res, next, id){
+	var query = Owner.findById(id);
+
+	query.exec(function(err, owner){
+		if (err) { return next(err); }
+		if (!owner) { return next(new Error('Can\'t find owner')); }
+
+		req.owner = owner;
+		return next();
+	});
+});
+
+router.get('/owners/:owner', function(req, res){
+	req.owner.populate('dogs', function(err, dog){
+		if (err) { return err}
+		res.json(dog);
+	})
+}); 
+
 // on routes that end in /owners/:owner_id
-router.route('/owners/:owner_id')
-  .get(function(req, res){
-    Owner.findById(req.params.owner_id, function(err, owner){
-      if(err){
-        res.send(err);
-      }
+router.route('/owners/:owner')
+
+  .get(function(req, res, next){
+    Owner.findById(req.owner.id, function(err, owner){
+      if(err){ return next(err); }
       res.json(owner);
     })
-    .put(function(req, res){
-      Owner.findById(req.params.owner_id, function(err, owner){
-        if(err){
-          res.send(err);
-        }
+
+    .put(function(req, res, next){
+    	
+      Owner.findById(req.owner.id, function(err, owner){
+        if(err){ return next(err); }
 
         owner.firstName = req.body.firstName;
         owner.lastName = req.body.lastName;
@@ -68,32 +91,36 @@ router.route('/owners/:owner_id')
         owner.location = req.body.location;
         owner.favorite = req.body.favorite;
         owner.numberOfBreeds = req.body.numberOfBreeds;
-        owner.numberOfDogs = req.body.numberOfDogs;
-        owner.dogsName = req.body.dogsName;
-        owner.dogsAge = req.body.dogsAge;
-        owner.dogsBreed = req.body.dogsBreed;
-        owner.dogsSex = req.body.dogsSex;
-        owner.timesBread = req.body.timesBread;
-        owner.dogHeight = req.body.dogHeight;
-        owner.dogWeight = req.body.dogWeight;
-        owner.dogAKCPapers = req.body.dogAKCPapers;
-        owner.aboutDog = req.body.aboutDog;
-        // owner.messages =  []
       });
     });
   })
-  .delete(function(req, res){
+
+  .delete(function(req, res, next){
     Owner.remove({_id: req.params.owner_id}, function(err){
-      if(err){
-        res.send(err);
-      }
+      if(err){ return next(err); }
 
       res.json({message: 'Successfully deleted'})
     })
   })
 
 
-router.post('/register', function(req, res, next){
+router.post('/posts/:owner/dogs', function(req, res, next){
+	var dog = new Dog(req.body);
+	console.log('this is req.post ======+++++', req.owner)
+	dog.owner = req.owner;
+	dog.save(function(err, dog){
+		if (err) { return next(err); }
+		req.owner.comments.push(dog);
+		req.owner.save(function(err, dog){
+			if (err) { return next(err)}
+			res.json(comment);
+		});
+	});
+});
+
+
+router.post('/signup', function(req, res, next){
+	console.log('test for signup post++++=', req.body);
   if(!req.body.username || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
   }
@@ -112,6 +139,8 @@ router.post('/register', function(req, res, next){
 });
 
 router.post('/login', function(req, res, next){
+	console.log('test for login post++++=', req.body);
+
   if(!req.body.username || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
   }

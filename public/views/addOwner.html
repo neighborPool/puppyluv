@@ -1,4 +1,4 @@
-<form ng-submit="submitOwner()" class="form">
+<form ng-submit="editUser(owner)" class="form">
   <ul>
     <li><h3>About You:</h3></li>
     <li> <label>First Name</label><br>
@@ -13,47 +13,50 @@
     <input type="text" name="favorite" ng-model="owner.favorite"> </li>
     <li> <label>Number of Breeds Owned</label><br>
     <input type="text" name="numberOfBreeds" ng-model="owner.numberOfBreeds"> </li>
-    <li> <label>Number of Dogs Owned</label><br>
-    <input type="text" name="numberOfDogs" ng-model="owner.numberOfDogs"> </li>
+    <li>
+      <input type="submit">
+    </li>
+  <div>{{message}}</div>
+</form>
 
-    <li><h3>About your dog:</h3></li>
+
+<button ng-click='showDogForm()'>Add Dog</button>
+
+
+
+<form ng-show='addADoggie = !addADoggie' ng-submit='addDog(dog)'>
+      <li><h3>About your dog:</h3></li>
     <li>
       <label>Dog's Name: </label><br>
-      <input type="text" name="dogsName" ng-model="owner.dogsName">
+      <input type="text" name="dogsName" ng-model="dog.dogsName">
     </li>
     <li>
       <label>Dog's Age</label><br>
-      <input type="text" name="dogsAge" ng-model="owner.dogsAge">
+      <input type="text" name="dogsAge" ng-model="dog.dogsAge">
     </li>
     <li>
       <label>Dog's Breed</label><br>
-      <input type="text" name="dogsBreed" ng-model="owner.dogsBreed">
+      <input type="text" name="dogsBreed" ng-model="dog.dogsBreed">
     </li>
     <li>
       <label>Dog's Sex</label><br>
-      <input type="text" name="dogsSex" ng-model="owner.dogsSex">
+      <input type="text" name="dogsSex" ng-model="dog.dogsSex">
     </li>
     <li>
       <label>Dog's Height</label><br>
-      <input type="text" name="dogsHeight" ng-model="owner.dogsHeight">
+      <input type="text" name="dogsHeight" ng-model="dog.dogsHeight">
     </li>
     <li>
       <label>Dog's Weight</label><br>
-      <input type="text" name="dogsWeight" ng-model="owner.dogsWeight">
+      <input type="text" name="dogsWeight" ng-model="dog.dogsWeight">
     </li>
     <li>
       <label>Dog's AKC Paperwork</label><br>
-      <input type="text" name="dogsAKC" ng-model="owner.dogsAKC">
+      <input type="text" name="dogsAKC" ng-model="dog.dogsAKC">
     </li>
-    <li>
-      <label>About your dog</label><br>
-      <textarea type="text-area" name="aboutDog" ng-model="owner.aboutDog"></textarea>
-    </li>
-
-
-
+   
 
     <li> <input type="submit">
   </ul>
-<div>{{message}}</div>
 </form>
+<!-- THIS IS INFO ABOUT THE DOG -->
