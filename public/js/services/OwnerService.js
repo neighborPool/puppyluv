@@ -1,6 +1,6 @@
 angular.module('OwnerService', [])
 
-.factory('Owner', ['$http', function($http) {
+.factory('Owner', ['$http', '$routeParams', function($http, $routeParams) {
 
   return {
     // call to get all owners
@@ -18,12 +18,21 @@ angular.module('OwnerService', [])
     // call to DELETE a owner
     delete : function(id) {
       return $http.delete('/api/owners/' + id);
+    },
+
+    addDog: function(id, dog){
+      return $http.post('/api/owners/' + id + '/dogs', dog)
+    },
+    getOwner: function(id){
+      return $http.get('/posts/' + id).then(function(res){
+        return res.data;
+      });
     }
   }       
 
 }])
 // auth factory
-.factory('auth', ['$http', '$window', function($http, $window){
+.factory('Auth', ['$http', '$window', function($http, $window){
   var auth = {};
   auth.saveToken = function (token){
     $window.localStorage['puppyluv-token'] = token;
@@ -54,7 +63,7 @@ angular.module('OwnerService', [])
     }
   };
 
-  auth.register = function(user){
+  auth.signup = function(user){
     return $http.post('/register', user).success(function(data){
       auth.saveToken(data.token);
     });

@@ -1,40 +1,29 @@
-angular.module('signup',[])
-
-..config(function($routeProvider){
-  $routeProvider
-  // the state will go on the html that you want route the user.
-  .when('/signup', {
-    templateUrl: 'views/signup.html',
-    controller: function($scope, $http, $location, $window){
-        
-        // create user and http requestf
-        $scope.submit = function(usern, passwrd){
-          $scope.newUser = {
-            username: usern,
-            password: passwrd,
-          }
-          console.log('New user', $scope.newUser)
-          $http({
-            method: 'POST',
-            url: '/signup',
-            contentType: 'application/json',
-            data: $scope.newUser
-          })
-          .then(function(resp){
-            console.log('this is resp++++',resp)
-            $window.localStorage.setItem('puppylove', resp.data.token); 
-            $location.path('/home')
-          })
-          .catch(function(error){
-            console.log(error)
-          });
-
-          $scope.username = '';
-          $scope.password = '';
-        }
-    },
-    controllerAs: 'SignupCtrl'
-  })
-
-
-})
+angular.module('signup',['OwnerService'])
+.controller('SignupCtrl',['$scope', '$http', '$location', '$window', 'auth', function($scope, $http, $location, $window, auth){
+    
+  $scope.signup = function(username, password){
+    $scope.user = {
+      username: username,
+      password: password
+    };
+    console.log('testing for user in signup', $scope.user)
+    auth.register($scope.user).error(function(error){
+      $scope.error = error;
+    }).then(function(){
+      $state.go('home');
+    });
+    // $http({
+    //   method: 'POST',
+    //   url: '/login',
+    //   data: $scope.user
+    // }).then(function(res){
+    //   $window.localStorage.setItem('puppylove.login', res.data.token);
+    //   $location.path('/home')
+    // })
+    // .catch(function(error){
+    //   console.log(error)
+    // });
+    $scope.username = '';
+    $scope.password = '';
+  };
+}])
