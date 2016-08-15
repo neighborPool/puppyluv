@@ -9,7 +9,8 @@ var app = angular.module('puppyLove', [
   'ngAria',
   'ngMessages',
   'ngMdIcons',
-  'MainController'
+  'MainController',
+  'MessagesController'
   ])
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -45,7 +46,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        templateUrl: 'views/signup.html'
     })
      .when('/messages', {
-      templateUrl: 'views/messages.html'
+      templateUrl: 'views/messages.html',
+      controller: 'MsgCtrl'
      })
     .otherwise({
      redirectTo: '/'
