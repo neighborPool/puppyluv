@@ -7,7 +7,6 @@ angular.module('MainController', ['OwnerService']).controller('MainCtrl', functi
 };
 
   Owner.get().then(function(data){
-      console.log(data.data)
       $scope.owners = data.data;
     })
 
