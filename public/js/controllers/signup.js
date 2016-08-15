@@ -1,5 +1,5 @@
 angular.module('signup',['OwnerService'])
-.controller('SignupCtrl',['$scope', '$http', '$location', '$window', 'auth', function($scope, $http, $location, $window, auth){
+.controller('SignupCtrl',['$scope', '$http', '$location', '$window', 'Auth', function($scope, $http, $location, $window, Auth){
     
   $scope.signup = function(username, password){
     $scope.user = {
@@ -7,7 +7,7 @@ angular.module('signup',['OwnerService'])
       password: password
     };
     console.log('testing for user in signup', $scope.user)
-    auth.register($scope.user).error(function(error){
+    Auth.register($scope.user).error(function(error){
       $scope.error = error;
     }).then(function(){
       $state.go('home');

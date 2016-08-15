@@ -120,20 +120,16 @@ router.post('/posts/:owner/dogs', function(req, res, next){
 
 
 router.post('/signup', function(req, res, next){
-	console.log('test for signup post++++=', req.body);
+	console.log('hittin the server')
   if(!req.body.username || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
   }
-
-  var user = new User();
-
+  var user = new Owner();
+  console.log(user);
   user.username = req.body.username;
-
   user.setPassword(req.body.password)
-
   user.save(function (err){
     if(err){ return next(err); }
-
     return res.json({token: user.generateJWT()})
   });
 });

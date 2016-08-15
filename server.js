@@ -10,6 +10,7 @@ var passport = require('passport');
 require('./models/owner');
 require('./models/message');
 require('./models/dog');
+require('./config/passport');
 
 var routes = require('./routes/api');
 // connect our database
