@@ -1,8 +1,5 @@
 // Dependencies
-var restful = require('node-restful');
-var mongoose = restful.mongoose;
-
-
+var mongoose = require('mongoose');
 // Schema
 var dogSchema = new mongoose.Schema({
   name: String,
@@ -10,9 +7,11 @@ var dogSchema = new mongoose.Schema({
   breed: String,
   sex: String,
   location: String,
-  owner : [{ type: Schema.Types.ObjectId, ref: 'Owner' }]
+  height: String,
+  weight: Number,
+  dogAKCPapers: String,
+  owner : { type: mongoose.Schema.Types.ObjectId, ref: 'Owner'}
 });
 
-
 // Return model
-module.exports = restful.model('Dogs', dogSchema)
+mongoose.model('Dog', dogSchema)
