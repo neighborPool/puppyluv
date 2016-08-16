@@ -23,12 +23,12 @@ OwnerSchema.methods.setPassword = function(password) {
   this.password = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 };
 
-OwnerSchema.methods.validatePassword = function(password){
+OwnerSchema.methods.validPassword = function(password){
   var loginPassword = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return this.password === loginPassword;
 };
 
-OwnerSchema.methods.generatedJWT = function(){
+OwnerSchema.methods.generateJWT = function(){
   // set expiration to 60 days
   var today = new Date();
   var exp = new Date(today);
