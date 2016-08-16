@@ -50,7 +50,31 @@ router.route('/owners')
     });
   });
 
+// ===== messages route ======
 
+router.route('/owners/:owner_id/messages')
+  .get(function(req, res){
+    Owner.findById(req.params.owner_id,
+      function(err, owner){
+        if(err){
+          res.send(err)
+        }
+        res.json(owner)
+      });
+  })
+  .put(function(req, res){
+    // console.log(':::put is working:::')
+    // console.log('Body data',req.body)
+    // console.log('req.params', req.params)
+
+    Owner.update({_id:req.params.owner_id}, {$push: {messages:req.body}
+
+}, function(err, owner){
+      res.send(owner)
+    });
+  });
+
+// ===== end messages route =====
 
 router.param('owner', function(req, res, next, id){
 	var query = Owner.findById(id);
@@ -72,7 +96,7 @@ router.get('/owners/:owner', function(req, res){
 }); 
 
 // on routes that end in /owners/:owner_id
-router.route('/owners/:owner')
+router.route('/owners/:owner_id')
 
   .get(function(req, res, next){
     Owner.findById(req.owner.id, function(err, owner){
@@ -96,6 +120,7 @@ router.route('/owners/:owner')
   })
 
   .delete(function(req, res, next){
+    console.log('running the delete');
     Owner.remove({_id: req.params.owner_id}, function(err){
       if(err){ return next(err); }
 

@@ -15,7 +15,7 @@ angular.module('OwnerService', [])
     update: function(ownerData, id){
       return $http.put('/api/owners/57aa4d5e4b31c711003c7621', ownerData);
     },
-    // call to DELETE a owner
+    // call to DELETE an owner
     delete : function(id) {
       return $http.delete('/api/owners/' + id);
     },
@@ -27,6 +27,9 @@ angular.module('OwnerService', [])
       return $http.get('/posts/' + id).then(function(res){
         return res.data;
       });
+    },
+    addComment: function(ownerData, toId, fromId){
+      return $http.put('/api/owners/' + toId + '/messages',  ownerData) && $http.put('/api/owners/' + fromId + '/messages',  ownerData)
     }
   }       
 
