@@ -1,23 +1,60 @@
-<form ng-submit="editUser(owner)" class="form">
-  <ul>
-    <li><h3>About You:</h3></li>
-    <li> <label>First Name</label><br>
-    <input type="text" name="firstName" ng-model="owner.firstName"> </li>
-    <li><label>Last Name</label><br>
-    <input type="text" name="lastName" ng-model="owner.lastName"> </li>
-    <li><label>Age</label><br>
-    <input type="text" name="age" ng-model="owner.age"> </li>
-    <li> <label>Location</label><br>
-    <input type="text" name="location" ng-model="owner.location"> </li>
-    <li> <label>Favorite Breed</label><br>
-    <input type="text" name="favorite" ng-model="owner.favorite"> </li>
-    <li> <label>Number of Breeds Owned</label><br>
-    <input type="text" name="numberOfBreeds" ng-model="owner.numberOfBreeds"> </li>
-    <li>
-      <input type="submit">
-    </li>
-  <div>{{message}}</div>
-</form>
+    <form ng-submit="editUser(owner)" class="form">
+      <ul>
+        <li><h3>About You:</h3></li>
+        <li>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>First name</label>
+          <input required ng-model="owner.firstName">
+        </md-input-container>
+        </li>
+        <li>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Last name</label>
+          <input required ng-model="owner.lastName">
+        </md-input-container>
+        </li>
+        <li>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Age</label>
+        <input required type="number" step="any" name="rate" ng-model="owner.age" min="18"
+               max="135" />
+        </md-input-container>
+        </li>
+        <li>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Location </label>
+          <input required ng-model="owner.Location">
+        </md-input-container>
+        </li>
+        <li>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Favorite Dog Breed </label>
+          <input required ng-model="owner.favorite">
+        </md-input-container>
+        </li>
+        <li>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Number of Breeds Owned </label>
+          <input required ng-model="owner.numberOfBreeds">
+        </md-input-container>
+        </li>
+        <!-- <li> <label>First Name</label><br>
+        <input type="text" name="firstName" ng-model="owner.firstName"> </li> -->
+        <!-- <li><label>Last Name</label><br>
+        <input type="text" name="lastName" ng-model="owner.lastName"> </li> -->
+        <!-- <li><label>Age</label><br>
+        <input type="text" name="age" ng-model="owner.age"> </li> -->
+        <!-- <li> <label>Location</label><br>
+        <input type="text" name="location" ng-model="owner.location"> </li> -->
+        <!-- <li> <label>Favorite Breed</label><br>
+        <input type="text" name="favorite" ng-model="owner.favorite"> </li> -->
+        <!-- <li> <label>Number of Breeds Owned</label><br>
+        <input type="text" name="numberOfBreeds" ng-model="owner.numberOfBreeds"> </li> -->
+        <li>
+          <input type="submit">
+        </li>
+      <div>{{message}}</div>
+    </form>
 
 
 <button ng-click='showDogForm()'>Add Dog</button>
@@ -27,32 +64,85 @@
 <form ng-show='addADoggie = !addADoggie' ng-submit='addDog(dog)'>
       <li><h3>About your dog:</h3></li>
     <li>
+    <md-input-container class="md-block" flex-gt-sm>
       <label>Dog's Name: </label><br>
       <input type="text" name="dogsName" ng-model="dog.dogsName">
+    </md-input-container>
     </li>
     <li>
+    <md-input-container class="md-block" flex-gt-sm>
       <label>Dog's Age</label><br>
       <input type="text" name="dogsAge" ng-model="dog.dogsAge">
+    </md-input-container>
     </li>
     <li>
-      <label>Dog's Breed</label><br>
-      <input type="text" name="dogsBreed" ng-model="dog.dogsBreed">
+    <md-input-container class="md-block" flex-gt-sm>
+    <label>Breed</label>
+            <md-select ng-model="dog.dogsBreed">
+              <md-option value="Labrador">
+                Labrador
+              </md-option>
+              <md-option value="Boxer">
+                Boxer
+              </md-option>
+              <md-option value="Doberman Pinscher">
+                Doberman Pinscher
+              </md-option>
+              <md-option value="Chihuahua">
+                Chihuahua
+              </md-option>
+              <md-option value="Shitzu">
+                Shitzu
+              </md-option>
+              <md-option value="Bulldog">
+                Bulldog
+              </md-option>
+              <md-option value="German Sheppard">
+                German Sheppard
+              </md-option>
+            </md-select>
+      <!-- <label>Dog's Breed</label><br>
+      <input type="text" name="dogsBreed" ng-model="dog.dogsBreed"> -->
+    </md-input-container>
     </li>
     <li>
+    <md-input-container class="md-block" flex-gt-sm>
       <label>Dog's Sex</label><br>
-      <input type="text" name="dogsSex" ng-model="dog.dogsSex">
+      <md-select ng-model="dog.dogsSex">
+        <md-option value="Male">
+          Male
+        </md-option>
+        <md-option value="Female">
+          Female
+        </md-option>
+    </md-select>
+    </md-input-container>
     </li>
     <li>
-      <label>Dog's Height</label><br>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Dog's Height In Inches</label><br>
       <input type="text" name="dogsHeight" ng-model="dog.dogsHeight">
+    </md-input-container>
     </li>
     <li>
-      <label>Dog's Weight</label><br>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Dog's Weight In Lbs.</label><br>
       <input type="text" name="dogsWeight" ng-model="dog.dogsWeight">
+    </md-input-container>
     </li>
     <li>
+    <md-input-container class="md-block" flex-gt-sm>
       <label>Dog's AKC Paperwork</label><br>
-      <input type="text" name="dogsAKC" ng-model="dog.dogsAKC">
+      <md-select ng-model="dog.dogsAKC">
+        <md-option value="Unavailable">
+          Unavailable
+        </md-option>
+        <md-option value="On File">
+          On File
+        </md-option>
+    </md-select>
+      <!-- <input type="text" name="dogsAKC" ng-model="dog.dogsAKC"> -->
+    </md-input-container>
     </li>
    
 
